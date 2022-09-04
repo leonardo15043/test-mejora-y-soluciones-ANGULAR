@@ -1,0 +1,125 @@
+// Custom Theming for Angular Material
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$my-primary: (
+  50 : #fff2e1,
+  100 : #fedeb3,
+  200 : #fec880,
+  300 : #feb14d,
+  400 : #fda127,
+  500 : #fd9001,
+  600 : #fd8801,
+  700 : #fc7d01,
+  800 : #fc7301,
+  900 : #fc6100,
+  A100 : #ffffff,
+  A200 : #fff4ef,
+  A400 : #ffd2bc,
+  A700 : #ffc0a2,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #000000,
+      500 : #ffffff,
+      600 : #000000,
+      700 : #000000,
+      800 : #000000,
+      900 : #000000,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+  )
+);
+
+$my-accent: (
+  50 : #e2eeff,
+  100 : #b6d4fe,
+  200 : #86b7fe,
+  300 : #569afe,
+  400 : #3184fd,
+  500 : #0d6efd,
+  600 : #0b66fd,
+  700 : #095bfc,
+  800 : #0751fc,
+  900 : #033ffc,
+  A100 : #ffffff,
+  A200 : #eff2ff,
+  A400 : #bcc8ff,
+  A700 : #a2b4ff,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+  )
+);
+
+$my-warn: (
+    50 : #fce3e3,
+    100 : #f8b9b9,
+    200 : #f48b8b,
+    300 : #f05c5c,
+    400 : #ec3939,
+    500 : #e91616,
+    600 : #e61313,
+    700 : #e31010,
+    800 : #df0c0c,
+    900 : #d90606,
+    A100 : #ffffff,
+    A200 : #ffcfcf,
+    A400 : #ff9c9c,
+    A700 : #ff8282,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$warn-palette: mat.define-palette($my-warn);
+
+//the first two are the custom palettes we declared above
+$my-theme-primary: mat.define-palette($my-primary);
+$accent-palette: mat.define-palette($my-accent);
+
+$custom-typography: mat.define-typography-config(
+    $font-family: 'Arial',
+    $display-1: mat.define-typography-level(10px, 10px, 400),
+);
+
+$custom-theme: mat.define-light-theme((
+  color: (
+    primary: $my-theme-primary,
+    accent: $accent-palette,
+    warn: $warn-palette
+  ),
+  typography: $custom-typography
+));
+
+@include mat.all-component-themes($custom-theme);
