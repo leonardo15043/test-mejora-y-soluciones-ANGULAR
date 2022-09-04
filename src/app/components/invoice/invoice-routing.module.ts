@@ -3,19 +3,23 @@ import { Routes, RouterModule } from '@angular/router';
 import { InvoiceListComponent } from './pages/invoice-list/invoice-list.component';
 import { InvoiceDetailComponent } from './pages/invoice-detail/invoice-detail.component';
 import { InvoiceActionComponent } from './pages/invoice-action/invoice-action.component';
+import { AuthGuardService } from 'src/app/core/services/auth-guard.service';
 
 const routes: Routes = [
     {
       path: 'list',
-      component: InvoiceListComponent
+      component: InvoiceListComponent,
+      canActivate: [ AuthGuardService ]
     },
     {
       path: 'detail',
-      component: InvoiceDetailComponent
+      component: InvoiceDetailComponent,
+      canActivate: [ AuthGuardService ]
     },
     {
       path: 'action',
-      component: InvoiceActionComponent
+      component: InvoiceActionComponent,
+      canActivate: [ AuthGuardService ]
     }
 ];
 
