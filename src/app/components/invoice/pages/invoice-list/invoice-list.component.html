@@ -1,5 +1,5 @@
 <h1 class="mt-5">Lista de Facturas</h1>
-<button type="button" class="btn btn-primary m-2">Nueva Factura</button>
+<button type="button" [routerLink]="['/invoice/action','add']" class="btn btn-primary m-2">Nueva Factura</button>
 <table mat-table [dataSource]="dataInvoice"  class="custom-table col-12">
 
     <ng-container matColumnDef="invoice_number"> 

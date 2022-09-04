@@ -3,7 +3,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Invoice } from '../../models/invoice.interface';
 import { InvoiceService } from '../../services/invoice.service';
 
-
 @Component({
   selector: 'app-invoice-list',
   templateUrl: './invoice-list.component.html',

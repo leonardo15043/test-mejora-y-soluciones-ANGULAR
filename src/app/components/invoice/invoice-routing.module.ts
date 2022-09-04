@@ -17,7 +17,7 @@ const routes: Routes = [
       canActivate: [ AuthGuardService ]
     },
     {
-      path: 'action',
+      path: 'action/:type',
       component: InvoiceActionComponent,
       canActivate: [ AuthGuardService ]
     }
