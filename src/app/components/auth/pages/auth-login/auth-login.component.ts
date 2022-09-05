@@ -26,12 +26,10 @@ export class AuthLoginComponent implements OnInit {
   }
 
   private setupForm(){
-
     this.loginForm = this.formBuilder.group({
       'email':[],
       'password':[]
     });
-
   }
 
   public login(){

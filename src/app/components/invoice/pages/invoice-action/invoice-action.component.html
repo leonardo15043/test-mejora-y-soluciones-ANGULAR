@@ -42,52 +42,28 @@
 
     <button type="submit" class="btn btn-primary mt-4 m-1">Guardar</button>
 
-    
     <ng-template [ngIf]="activeProducts">
         <h2 class="mt-5">Lista de productos</h2>
 
-        <div class="row g-3">
+        <div class="row g-3 mb-5" *ngFor="let product of products">
             <div class="col-md-3">
-                <label for="exampleFormControlInput1" class="form-label">Descripción</label>
-                <div class="form-value m-2">Audifonos</div>
+                <label for="description" class="form-label">Descripción</label>
+                <div class="form-value m-2">{{ product.description }}</div>
             </div>
             <div class="col-md-1">
-                <label for="exampleFormControlInput1" class="form-label">Cantidad</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1">
+                <label for="count" class="form-label">Cantidad</label>
+                <input type="text" class="form-control" id="count" (keyup)="valueProduct(product,prod)" #prod>
             </div>
             <div class="col-md-3">
-                <label for="exampleFormControlInput1" class="form-label">Valor Unitario</label>
-                <div class="form-value m-2">40000</div>
+                <label for="unit_value" class="form-label">Valor Unitario</label>
+                <div class="form-value m-2">{{ product.unit_value }}</div>
             </div>
             <div class="col-md-3">
-                <label for="exampleFormControlInput1" class="form-label">Valor Total</label>
-                <div class="form-value m-2">240000</div>
+                <label for="total" class="form-label">Valor Total</label>
+                <div class="form-value m-2">{{ product.total_value }}</div>
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-primary mt-4 m-1">Agregar</button>
-                <button type="button" class="btn btn-danger mt-4 m-1">Quitar</button>
-            </div>
-        </div>
-        <div class="row g-3">
-            <div class="col-md-3">
-                <label for="exampleFormControlInput1" class="form-label">Descripción</label>
-                <div class="form-value m-2">Audifonos</div>
-            </div>
-            <div class="col-md-1">
-                <label for="exampleFormControlInput1" class="form-label">Cantidad</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1">
-            </div>
-            <div class="col-md-3">
-                <label for="exampleFormControlInput1" class="form-label">Valor Unitario</label>
-                <div class="form-value m-2">40000</div>
-            </div>
-            <div class="col-md-3">
-                <label for="exampleFormControlInput1" class="form-label">Valor Total</label>
-                <div class="form-value m-2">240000</div>
-            </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-primary mt-4 m-1">Agregar</button>
-                <button type="button" class="btn btn-danger mt-4 m-1">Quitar</button>
+                <button type="button" class="btn btn-primary mt-4 m-1" (click)="assignProduct(product)">Agregar</button>
             </div>
         </div>
     </ng-template>

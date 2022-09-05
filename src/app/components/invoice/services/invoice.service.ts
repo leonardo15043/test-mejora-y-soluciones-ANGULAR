@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { environment } from '../../../../environments/environment';
-import { Invoice } from '../models/invoice.interface';
+import { Invoice, InvoiceProduct } from '../models/invoice.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +27,8 @@ export class InvoiceService {
       return this.http.post<Invoice>(`${ this.url }invoice/add`,invoice, { headers: this.headers });
   }
 
+  assignProduct( invoiceProduct:InvoiceProduct ){
+    return this.http.post<InvoiceProduct>(`${ this.url }invoice/product/assign`,invoiceProduct, { headers: this.headers });
+  }
 
 }
