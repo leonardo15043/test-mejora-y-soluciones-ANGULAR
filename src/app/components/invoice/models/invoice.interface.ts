@@ -3,7 +3,9 @@ export interface Invoice {
     invoice_number: number;
     created_at:Date;
     sender_name:string;
+    sender_nit:number
     receiver_name:string;
+    receiver_nit:number;
     amount:number;
     iva:number;
     total:number;

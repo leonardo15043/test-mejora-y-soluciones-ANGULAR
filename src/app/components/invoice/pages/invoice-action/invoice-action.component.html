@@ -40,7 +40,7 @@
         <input type="number" class="form-control" id="total" name="total" formControlName="total" [attr.disabled]="true">
     </div>
 
-    <button type="submit" class="btn btn-primary mt-4 m-1">Guardar</button>
+    <button type="submit" class="btn btn-primary mt-4 m-1" *ngIf="action == 'add' || action == 'edit'">Guardar</button>
 
     <ng-template [ngIf]="activeProducts">
         <h2 class="mt-5">Lista de productos</h2>
@@ -52,7 +52,7 @@
             </div>
             <div class="col-md-1">
                 <label for="count" class="form-label">Cantidad</label>
-                <input type="text" class="form-control" id="count" (keyup)="valueProduct(product,prod)" #prod>
+                <input type="text" class="form-control" id="count" (keyup)="valueProduct(product,prod)" [value]="(product.units_product) ? product.units_product : 0 " #prod>
             </div>
             <div class="col-md-3">
                 <label for="unit_value" class="form-label">Valor Unitario</label>
@@ -63,7 +63,7 @@
                 <div class="form-value m-2">{{ product.total_value }}</div>
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-primary mt-4 m-1" (click)="assignProduct(product)">Agregar</button>
+                <button type="button" class="btn btn-primary mt-4 m-1" (click)="assignProduct(product)" *ngIf="action == 'add'">Agregar</button>
             </div>
         </div>
     </ng-template>

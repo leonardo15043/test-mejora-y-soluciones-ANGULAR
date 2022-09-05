@@ -40,8 +40,9 @@
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Acciones </th>
         <td mat-cell *matCellDef="let element">
-            <button type="button" class="btn btn-primary m-1">Editar</button>
-            <button type="button" class="btn btn-danger m-1">Eliminar</button>
+          <button type="button" class="btn btn-primary m-1" [routerLink]="['/invoice/action','edit',element.id]">Editar</button>
+          <button type="button" class="btn btn-success m-1" [routerLink]="['/invoice/action','view',element.id]">Ver</button>
+   
         </td>
     </ng-container>
   
