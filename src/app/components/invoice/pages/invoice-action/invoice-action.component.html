@@ -3,7 +3,7 @@
 
     <div class="col-md-6">
         <label for="invoice_number" class="form-label">Número de factura</label>
-        <div class="form-value">53434534534534</div>
+        <div class="form-value">{{ invoiceForm.get('invoice_number')?.value }}</div>
         <input type="hidden" class="form-control" id="invoice_number" name="invoice_number" formControlName="invoice_number" >
     </div>
     <div class="col-md-6">
@@ -15,7 +15,7 @@
     </div>
     <div class="col-md-6">
         <label for="sender_nit" class="form-label">Nit del emisor </label>
-        <input type="text" class="form-control" id="sender_nit" name="sender_nit" formControlName="sender_nit">
+        <input type="number" class="form-control" id="sender_nit" name="sender_nit" formControlName="sender_nit">
     </div>
 
     <div class="col-md-6">
@@ -24,12 +24,12 @@
     </div>
     <div class="col-md-6">
         <label for="receiver_nit" class="form-label">Nit del comprador </label>
-        <input type="text" class="form-control" id="receiver_nit"  name="receiver_nit" formControlName="receiver_nit">
+        <input type="number" class="form-control" id="receiver_nit"  name="receiver_nit" formControlName="receiver_nit">
     </div>
 
     <div class="col-md-4">
         <label for="amount" class="form-label"> Valor antes de IVA</label>
-        <input type="number" class="form-control" id="amount" name="amount" formControlName="amount">
+        <input type="number" class="form-control" id="amount" name="amount" formControlName="amount" [attr.disabled]="true">
     </div>
     <div class="col-md-4">
         <label for="iva" class="form-label">IVA</label>
@@ -37,54 +37,59 @@
     </div>
     <div class="col-md-4">
         <label for="total" class="form-label">Valor a pagar</label>
-        <input type="number" class="form-control" id="total" name="total" formControlName="total">
+        <input type="number" class="form-control" id="total" name="total" formControlName="total" [attr.disabled]="true">
     </div>
 
-    <h2 class="mt-5">Lista de productos</h2>
+    <button type="submit" class="btn btn-primary mt-4 m-1">Guardar</button>
 
-    <div class="row g-3">
-        <div class="col-md-3">
-            <label for="exampleFormControlInput1" class="form-label">Descripción</label>
-            <div class="form-value m-2">Audifonos</div>
+    
+    <ng-template [ngIf]="activeProducts">
+        <h2 class="mt-5">Lista de productos</h2>
+
+        <div class="row g-3">
+            <div class="col-md-3">
+                <label for="exampleFormControlInput1" class="form-label">Descripción</label>
+                <div class="form-value m-2">Audifonos</div>
+            </div>
+            <div class="col-md-1">
+                <label for="exampleFormControlInput1" class="form-label">Cantidad</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1">
+            </div>
+            <div class="col-md-3">
+                <label for="exampleFormControlInput1" class="form-label">Valor Unitario</label>
+                <div class="form-value m-2">40000</div>
+            </div>
+            <div class="col-md-3">
+                <label for="exampleFormControlInput1" class="form-label">Valor Total</label>
+                <div class="form-value m-2">240000</div>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-primary mt-4 m-1">Agregar</button>
+                <button type="button" class="btn btn-danger mt-4 m-1">Quitar</button>
+            </div>
         </div>
-        <div class="col-md-1">
-            <label for="exampleFormControlInput1" class="form-label">Cantidad</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1">
+        <div class="row g-3">
+            <div class="col-md-3">
+                <label for="exampleFormControlInput1" class="form-label">Descripción</label>
+                <div class="form-value m-2">Audifonos</div>
+            </div>
+            <div class="col-md-1">
+                <label for="exampleFormControlInput1" class="form-label">Cantidad</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1">
+            </div>
+            <div class="col-md-3">
+                <label for="exampleFormControlInput1" class="form-label">Valor Unitario</label>
+                <div class="form-value m-2">40000</div>
+            </div>
+            <div class="col-md-3">
+                <label for="exampleFormControlInput1" class="form-label">Valor Total</label>
+                <div class="form-value m-2">240000</div>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-primary mt-4 m-1">Agregar</button>
+                <button type="button" class="btn btn-danger mt-4 m-1">Quitar</button>
+            </div>
         </div>
-        <div class="col-md-3">
-            <label for="exampleFormControlInput1" class="form-label">Valor Unitario</label>
-            <div class="form-value m-2">40000</div>
-        </div>
-        <div class="col-md-3">
-            <label for="exampleFormControlInput1" class="form-label">Valor Total</label>
-            <div class="form-value m-2">240000</div>
-        </div>
-        <div class="col-md-2">
-            <button type="button" class="btn btn-primary mt-4 m-1">Agregar</button>
-            <button type="button" class="btn btn-danger mt-4 m-1">Quitar</button>
-        </div>
-    </div>
-    <div class="row g-3">
-        <div class="col-md-3">
-            <label for="exampleFormControlInput1" class="form-label">Descripción</label>
-            <div class="form-value m-2">Audifonos</div>
-        </div>
-        <div class="col-md-1">
-            <label for="exampleFormControlInput1" class="form-label">Cantidad</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1">
-        </div>
-        <div class="col-md-3">
-            <label for="exampleFormControlInput1" class="form-label">Valor Unitario</label>
-            <div class="form-value m-2">40000</div>
-        </div>
-        <div class="col-md-3">
-            <label for="exampleFormControlInput1" class="form-label">Valor Total</label>
-            <div class="form-value m-2">240000</div>
-        </div>
-        <div class="col-md-2">
-            <button type="button" class="btn btn-primary mt-4 m-1">Agregar</button>
-            <button type="button" class="btn btn-danger mt-4 m-1">Quitar</button>
-        </div>
-    </div>
+    </ng-template>
 
 </form>

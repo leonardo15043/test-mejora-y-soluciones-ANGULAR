@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import { random, statusHttp } from 'src/app/core/helpers/utilities';
 import { Invoice } from '../../models/invoice.interface';
 import { InvoiceService } from '../../services/invoice.service';
 
@@ -13,11 +15,13 @@ export class InvoiceActionComponent implements OnInit {
 
   public nameAction:string;
   public invoiceForm:FormGroup;
+  public activeProducts:boolean;
 
   constructor(
     private _invoiceService:InvoiceService,
     private route:ActivatedRoute,
     private formBuilder:FormBuilder,
+    private _snackBar: MatSnackBar,
   ) { 
     this.route.params.subscribe( params=>{
       this.actionType(params['type']);
@@ -32,6 +36,7 @@ export class InvoiceActionComponent implements OnInit {
     switch (action) {
       case 'add':
         this.nameAction = "Agregar factura";
+        this.activeProducts = false;
         break;
       case 'edit':
         this.nameAction = "Editar factura";
@@ -44,14 +49,32 @@ export class InvoiceActionComponent implements OnInit {
   
   private setupForm(){
     this.invoiceForm = this.formBuilder.group({
-      'email':[],
-      'password':[]
+      'invoice_number':[random(0,50000)],
+      'sender_name':[],
+      'sender_nit':[],
+      'receiver_name':[],
+      'receiver_nit':[],
+      'amount':[0],
+      'iva':[],
+      'total':[0],
     });
   }
 
   public saveInvoice(){
     this._invoiceService.saveInvoice(this.invoiceForm.value).subscribe( (invoice:Invoice)=>{
-        console.log(invoice);
+      this.activeProducts = true;
+      this._snackBar.open('Factura creada correctamente','',
+        {
+          duration: 4000,
+        }
+      );
+    },error => {
+      this._snackBar.open(statusHttp(error.status),'',
+        {
+          panelClass: 'alert-error',
+          duration: 4000,
+        }
+      );
     });
   }
 
