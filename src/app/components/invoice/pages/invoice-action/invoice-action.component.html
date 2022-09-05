@@ -1,45 +1,43 @@
-<h1 class="mt-5">Nueva factura</h1>
-<form class="row mt-2 g-3">
+<h1 class="mt-5">{{ nameAction }}</h1>
+<form class="row mt-2 g-3" [formGroup]="invoiceForm" (ngSubmit)="saveInvoice()">
 
     <div class="col-md-6">
-        <label for="exampleFormControlInput1" class="form-label">Número de factura</label>
+        <label for="invoice_number" class="form-label">Número de factura</label>
         <div class="form-value">53434534534534</div>
-        <input type="hidden" class="form-control" id="exampleFormControlInput1" >
+        <input type="hidden" class="form-control" id="invoice_number" name="invoice_number" formControlName="invoice_number" >
     </div>
     <div class="col-md-6">
-        <label for="exampleFormControlInput1" class="form-label">Fecha y hora </label>
-        <input type="date" class="form-control" id="exampleFormControlInput1">
     </div>
 
     <div class="col-md-6">
-        <label for="exampleFormControlInput1" class="form-label">Nombre del emisor </label>
-        <input type="text" class="form-control" id="exampleFormControlInput1">
+        <label for="sender_name" class="form-label">Nombre del emisor </label>
+        <input type="text" class="form-control" id="sender_name" name="sender_name" formControlName="sender_name">
     </div>
     <div class="col-md-6">
-        <label for="exampleFormControlInput1" class="form-label">Nit del emisor </label>
-        <input type="text" class="form-control" id="exampleFormControlInput1">
+        <label for="sender_nit" class="form-label">Nit del emisor </label>
+        <input type="text" class="form-control" id="sender_nit" name="sender_nit" formControlName="sender_nit">
     </div>
 
     <div class="col-md-6">
-        <label for="exampleFormControlInput1" class="form-label">Nombre del comprador </label>
-        <input type="text" class="form-control" id="exampleFormControlInput1">
+        <label for="receiver_name" class="form-label">Nombre del comprador </label>
+        <input type="text" class="form-control" id="receiver_name" name="receiver_name" formControlName="receiver_name">
     </div>
     <div class="col-md-6">
-        <label for="exampleFormControlInput1" class="form-label">Nit del comprador </label>
-        <input type="text" class="form-control" id="exampleFormControlInput1">
+        <label for="receiver_nit" class="form-label">Nit del comprador </label>
+        <input type="text" class="form-control" id="receiver_nit"  name="receiver_nit" formControlName="receiver_nit">
     </div>
 
     <div class="col-md-4">
-        <label for="exampleFormControlInput1" class="form-label"> Valor antes de IVA</label>
-        <input type="number" class="form-control" id="exampleFormControlInput1">
+        <label for="amount" class="form-label"> Valor antes de IVA</label>
+        <input type="number" class="form-control" id="amount" name="amount" formControlName="amount">
     </div>
     <div class="col-md-4">
-        <label for="exampleFormControlInput1" class="form-label">IVA</label>
-        <input type="number" class="form-control" id="exampleFormControlInput1">
+        <label for="iva" class="form-label">IVA</label>
+        <input type="number" class="form-control" id="iva" name="iva" formControlName="iva">
     </div>
     <div class="col-md-4">
-        <label for="exampleFormControlInput1" class="form-label">Valor a pagar</label>
-        <input type="number" class="form-control" id="exampleFormControlInput1">
+        <label for="total" class="form-label">Valor a pagar</label>
+        <input type="number" class="form-control" id="total" name="total" formControlName="total">
     </div>
 
     <h2 class="mt-5">Lista de productos</h2>

@@ -23,5 +23,9 @@ export class InvoiceService {
     return this.http.get<Invoice[]>(`${ this.url }invoice/all`, { headers: this.headers }).pipe( map( data => data ));
   }
 
+  saveInvoice( invoice:Invoice ){
+      return this.http.post<Invoice>(`${ this.url }invoice/add`,invoice, { headers: this.headers });
+  }
+
 
 }
